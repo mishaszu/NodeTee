@@ -3,7 +3,23 @@ Repo in development
 
 ##Instruction
 
-1. import ***Launcher*** in your main test faile
-2. import all test modules and use in Launcher
-3. import ***Test*** in your module
-4. run ***Launcher.run***
+1. Define function with module:
+```
+const {Test} = require('node-tee');
+function Module1() {
+    const test = Test.new();
+    test.module('Testing important thing', function() {
+        test.case('adding element', function(x) {
+            x.run(true).toBe(true);
+        });
+    });
+
+    return test;
+}
+```
+
+2. Running all modules from launcher:
+```
+const {Launcher} = require('node-tee');
+Launcher.run(Module1);
+```

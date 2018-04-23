@@ -4,7 +4,8 @@
   "description": "Simply node test framework",
   "main": "index.js",
   "scripts": {
-    "test": "node test/launcher.js"
+    "test": "node test/launcher.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
