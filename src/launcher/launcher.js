@@ -24,7 +24,8 @@ module.exports = {
             failed += module.failed;
         });
         if (failed) {
-            throw `${failed}/${executed} tests failed. `;
+            log.error(`${failed}/${executed} tests failed.`);
+            throw `FAILED TO EXECUTE TESTS`;
         } else {
             log.headInfo(`<-- All tests passed ${passed}/${executed}. -->`);
         }
