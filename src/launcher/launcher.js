@@ -7,7 +7,7 @@ module.exports = {
         this.time = Date.now();
     },
     end: function() {
-        log.head('<-- Finished testing -->');
+        log.head(`<-- Finished testing ${(Date.now() - this.time)/1000}-->`);
     },
     modules: [],
     run: function(modules) {
@@ -26,7 +26,7 @@ module.exports = {
         if (failed) {
             throw `${failed}/${executed} tests failed. `;
         } else {
-            log.headInfo(`<--- All tests passed ${passed}/${executed}.`);
+            log.headInfo(`<-- All tests passed ${passed}/${executed}. -->`);
         }
         this.end();
     },
