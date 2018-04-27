@@ -6,4 +6,5 @@ module.exports = {
     error: l().pipe('red', 'date', 'log'),
     head: l().pipe('cyan', 'date', 'log'),
     headInfo: l().pipe('yellow', 'date', 'log'),
+    headModule: l().pipe('magneta', 'date', 'log'),
 };

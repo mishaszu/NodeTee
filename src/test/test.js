@@ -5,7 +5,7 @@ module.exports = {
     failed: 0,
     passed: 0,
     module: function(descriptor, callback) {
-        log.info(`<-- testing module ${descriptor} -->`);
+        log.headModule(`<-- testing module ${descriptor} -->`);
         const reulst = callback();
         this.register.forEach( oneCase => {
             this.executed += oneCase.executed;
