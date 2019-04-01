@@ -23,3 +23,13 @@ const myPot = Pot.new('My App');
 myPot.register([myTee]);
 myPot.run();
 ```
+
+##### expect
+`case` method callback provide expect functionality
+```js
+myTee('Controller', (expect) => {
+    expect(true).toBe(true);
+    expect(true).toBeTruthy();
+    expect(false).toBeFalsy();
+})
+```
