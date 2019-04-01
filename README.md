@@ -1,7 +1,7 @@
 # NodeTee
 Simple test runner for Nodejs projects.
 
-##Instruction
+## Instruction
 
 ##### Define test with `Tee`
 ```js
