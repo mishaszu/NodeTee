@@ -24,7 +24,7 @@ module.exports = {
     good(`${scc}/${len} Passed`);
     error(`${err}/${len} Errored`);
     info(`${ign}/${len} ignored`);
-    if (error.length) {
+    if (err.length) {
       throw Error('Not all tests passed');
     }
     return { scc, err, ign, len };
