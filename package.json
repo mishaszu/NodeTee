@@ -1,6 +1,6 @@
 {
   "name": "node-tee",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Simply node test framework",
   "main": "src/index.js",
   "scripts": {
