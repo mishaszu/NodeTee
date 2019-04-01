@@ -1,1 +1,1 @@
-module.exports = require('./launcher.js');
+module.exports = require('./launcher');

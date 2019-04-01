@@ -1,34 +1,38 @@
-const log = require('../log');
-
+const { head, good, error, info, headInfo } = require('../log');
 module.exports = {
-    time: null,
-    start: function() {
-        log.head('<-- start testing -->');
-        this.time = Date.now();
-    },
-    end: function() {
-        log.head(`<-- Finished testing ${(Date.now() - this.time)/1000}-->`);
-    },
-    modules: [],
-    run: function(modules) {
-        this.start();
-        modules.forEach(module => {
-            this.modules.push(module());
-        });
-        let executed = 0,
-            passed = 0,
-            failed = 0;
-        this.modules.forEach(module => {
-            executed += module.executed;
-            passed += module.passed;
-            failed += module.failed;
-        });
-        if (failed) {
-            log.error(`${failed}/${executed} tests failed.`);
-            throw `FAILED TO EXECUTE TESTS`;
-        } else {
-            log.headInfo(`<-- All tests passed ${passed}/${executed}. -->`);
-        }
-        this.end();
-    },
-}
+  register([...tests]) {
+    tests.forEach(t => this.tests.push(t));
+  },
+  run() {
+    let scc = 0;
+    let err = 0;
+    let ign = 0;
+    let len = 0;
+    head(`<<----Running tests for ${this.name}---->>`);
+    head('');
+    this.tests.forEach(t => {
+      const res = t.run();
+      scc += res.scc;
+      err += res.err;
+      ign += res.ign;
+      len += res.len;
+    });
+    headInfo('');
+    headInfo('');
+    headInfo('');
+    headInfo('Sum up');
+    good(`${scc}/${len} Passed`);
+    error(`${err}/${len} Errored`);
+    info(`${ign}/${len} ignored`);
+    if (error.length) {
+      throw Error('Not all tests passed');
+    }
+    return { scc, err, ign, len };
+  },
+  new(name) {
+    const L = Object.create(this);
+    L.name = name;
+    L.tests = [];
+    return L;
+  },
+};

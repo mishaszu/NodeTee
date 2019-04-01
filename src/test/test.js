@@ -1,49 +1,71 @@
-const log = require('../log');
+const { headInfo, error, good, info } = require('../log');
+const expect = require('../Expect');
 
 module.exports = {
-    executed: 0,
-    failed: 0,
-    passed: 0,
-    module: function(descriptor, callback) {
-        log.headModule(`<-- testing module ${descriptor} -->`);
-        const reulst = callback();
-        this.register.forEach( oneCase => {
-            this.executed += oneCase.executed;
-            this.failed += oneCase.failed;
-            this.passed += oneCase.passed;
-        });
-    },
-    register: [],
-    case: function (descriptor, callback) {
-        log.info(`<- ${descriptor} ->`);
-        const wrapper = Object.assign({}, this.tester, {executed:0, failed:0, passed: 0});
-        const result = callback(wrapper);
-        this.register.push(wrapper);
-    },
-    tester: {
-        executed: 0,
-        failed: 0,
-        passed: 0,
-        run: function(value, name) {
-            return {
-                toBe: value2 => {
-                    this.executed++;
-                    if (value === value2) {
-                        log.good('passed');
-                        this.passed++;
-                    }else {
-                        if (name) {
-                            log.error(`Failed, expect >${value}< to be >${value2}< in test ${name}`);
-                        } else {
-                            log.error(`Failed, expect >${value}< to be >${value2}<`);
-                        }
-                        this.failed++;
-                    }
-                }
-            }
+  run() {
+    let counter = 0;
+    let scc = 0;
+    let err = 0;
+    let ign = 0;
+    let len = this.cases.length;
+    headInfo('');
+    headInfo(`<--Running ${this.name} tests-->`);
+    const focus = this.cases.find(c => c.focus);
+    if (focus) {
+      info(`Running only 1 test from ${len}`);
+      ign = len - 1;
+      try {
+        focus.fn(expect);
+        good(`Pass Succesfully`);
+        good(focus.message);
+        scc++;
+      } catch (e) {
+        error(`Throwed error`);
+        error(focus.message);
+        error(e);
+        err++;
+      }
+      return { scc, err, ign, len };
+    }
+    this.cases.forEach(c => {
+      counter++;
+      if (c.ignore) {
+        info(`id ${counter}/${len} Ignored`);
+        info(c.message);
+        ign++;
+      } else if (c.shout) {
+        good(`id ${counter}/${len} Pass Succesfully`);
+        good(c.message);
+        scc++;
+      } else {
+        try {
+          c.fn(expect);
+          good(`id ${counter}/${len} Pass Succesfully`);
+          good(c.message);
+          scc++;
+        } catch (e) {
+          error(`id ${counter}/${len} throwed error`);
+          error(c.message);
+          error(e);
+          err++;
         }
-    },
-    new: function() {
-        return Object.assign({}, this, {executed: 0, failed:0, passed:0, register: []});
-    },
+      }
+    });
+    return { scc, err, ign, len };
+  },
+  case(message, fn, { focus, ignore, shout } = {}) {
+    this.cases.push({
+      message,
+      fn,
+      focus,
+      ignore,
+      shout,
+    });
+  },
+  new(name) {
+    const T = Object.create(this);
+    T.name = name;
+    T.cases = [];
+    return T;
+  },
 };

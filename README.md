@@ -1,25 +1,25 @@
 # NodeTee
-Repo in development
+Simple test runner for Nodejs projects.
 
 ##Instruction
 
-1. Define function with module:
-```
-const {Test} = require('node-tee');
-function Module1() {
-    const test = Test.new();
-    test.module('Testing important thing', function() {
-        test.case('adding element', function(x) {
-            x.run(true).toBe(true);
-        });
-    });
+##### Define test with `Tee`
+```js
+const {Tee} = require('node-tee');
 
-    return test;
-}
+const myTee = Tee.new('Controller x');
+myTee.case('Controller should pass', () => {
+    assert(true, true);
+});
+module.exports = myTee;
 ```
 
-2. Running all modules from launcher:
-```
-const {Launcher} = require('node-tee');
-Launcher.run(Module1);
+##### Register `Tee` in `Pot`
+```js
+const {Pot} = require('node-tee');
+const myTee = require('./myTee.path.js');
+
+const myPot = Pot.new('My App');
+myPot.register([myTee]);
+myPot.run();
 ```
