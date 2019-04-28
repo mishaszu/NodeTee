@@ -10,7 +10,7 @@ const expect = value1 => {
     },
     toBeFalsy() {
       assert(value1 == false);
-    }
+    },
   };
 };
 
