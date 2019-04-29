@@ -1,0 +1,74 @@
+/**
+ * @module expect
+ * @description functionality for better assertion tests
+ */
+
+/**
+ * @function
+ * @name expect
+ * @description expect is curried function that accept parameter and return object with assertion methods
+ * @example
+ * expect(1)
+ * @param {String | Number | Boolean | Array}
+ * @return {Object}
+ */
+
+/**
+ * @function
+ * @name toBe
+ * @description toBe take param and make assertion if carried value is equal given paramater.
+ * @example
+ * expect(1).toBe(1) // will pass
+ * const a = ['a', 'b', 'c'];
+ * expect(a[1]).toBe('a') // will throw error
+ * @param {String | Number | Boolean}
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name toBeTruthy
+ * @description toBeTruthy coerce curied value and compare it to true
+ * @example
+ * expect(true).toBeTruthy() // will pass
+ * expect('some text').toBeTruthy() // will pass
+ * expect('').toBeTruthy() // will fail
+ * expect(undefined).toBeTruthy() // will fail
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name toBeFalsy
+ * @description toBeFalsy coerce curied value and compare it to false
+ * @example
+ * expect(true).toBeFalsy() // will fail
+ * expect('some text').toBeFalsy() // will fail
+ * expect('').toBeFalsy() // will pass
+ * expect(undefined).toBeFalsy() // will pass
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name toNotBeEmpty
+ * @description toNotBeEmpty check if given array is not empty
+ * @example
+ * expect([1,2,3]).toNotBeEmpty() // will pass
+ * expect([]).toNotBeEmpty() // will fail
+ * expect('string').toNotBeEmpty() // will pass
+ * expect(1).toNotBeEmpty() // will fail
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name toBeEmpty
+ * @description toBeEmpty check if given array is empty
+ * @example
+ * expect([1,2,3]).toNotBeEmpty() // will fail
+ * expect([]).toNotBeEmpty() // will pass
+ * expect('string').toNotBeEmpty() // will fail
+ * expect(1).toNotBeEmpty() // will fail
+ * @return {Void}
+ */

@@ -1,4 +1,5 @@
 const { head, good, error, info, headInfo } = require('../log');
+
 module.exports = {
   register([...tests]) {
     tests.forEach(t => this.tests.push(t));
@@ -24,7 +25,7 @@ module.exports = {
     good(`${scc}/${len} Passed`);
     error(`${err}/${len} Errored`);
     info(`${ign}/${len} ignored`);
-    if (err.length) {
+    if (err > 0) {
       throw Error('Not all tests passed');
     }
     return { scc, err, ign, len };

@@ -1,14 +1,16 @@
 {
   "name": "node-tee",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Simply node test framework",
   "main": "src/index.js",
   "scripts": {
-    "test": "node tests"
+    "test": "node test",
+    "test:watch": "nodemon test",
+    "docs": "npx jsdoc -c jsdoc.json ./README.md"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mishaszu/NodeTee.git"
+    "url": "git+https://github.com/mishaszu/node-tee.git"
   },
   "keywords": [
     "node",
@@ -21,10 +23,14 @@
   "author": "mishaszu@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mishaszu/NodeTee/issues"
+    "url": "https://github.com/mishaszu/node-tee/issues"
   },
-  "homepage": "https://github.com/mishaszu/NodeTee#readme",
+  "homepage": "https://github.com/mishaszu/node-tee#readme",
   "dependencies": {
     "l-print": "0.0.8"
+  },
+  "devDependencies": {
+    "docdash": "^1.1.0",
+    "jsdoc": "^3.5.5"
   }
 }

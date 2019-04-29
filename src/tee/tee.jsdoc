@@ -1,0 +1,37 @@
+/**
+ * @module Tee
+ * @description module that register test cases
+ * @todo implement folding / hiding succesfull tests
+ */
+
+/**
+ * @function
+ * @name new
+ * @description new create new Tee instance
+ * @example
+ * const myTee = Tee.new('MyTee');
+ * @param {String} name Tee name or short description
+ * @return {Tee}
+ */
+
+/**
+ * @function
+ * @name case
+ * @description case register Tee test case, second argument is expect object
+ * @see expect
+ * @example
+ * const myTee = Tee.new('MyTee');
+ * myTee.case('Should pass example test', expect => {
+ *   expect(true).toBeTruthy();
+ * });
+ * @param {String} message - message or description
+ * @param {Function} fn - callback that gets expect object as argument
+ * @param {Object} flags - { focus, ignore, shout } 
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name run
+ * @description run runs all Tee cases. It should be run by Pot. Private use only
+ */

@@ -1,5 +1,5 @@
 const { headInfo, error, good, info } = require('../log');
-const expect = require('../Expect');
+const expect = require('../expect');
 
 module.exports = {
   run() {

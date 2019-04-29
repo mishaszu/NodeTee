@@ -1,5 +1,4 @@
-
 module.exports = {
-  Tee: require('./test'),
-  Pot: require('./launcher'),
-}
+  Tee: require('./tee'),
+  Pot: require('./pot'),
+};
