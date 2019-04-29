@@ -6,10 +6,10 @@ const expect = value1 => {
       assert(value1 === value2);
     },
     toBeTruthy() {
-      assert(value1 == true);
+      assert(!!value1 === true);
     },
     toBeFalsy() {
-      assert(value1 == false);
+      assert(!!value1 === false);
     },
   };
 };

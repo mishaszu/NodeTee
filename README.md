@@ -1,5 +1,5 @@
 # NodeTee
-Simple test runner for Nodejs projects.
+Simple test runner for javascript projects.
 
 ## Instruction
 
@@ -31,5 +31,5 @@ myTee('Controller', (expect) => {
     expect(true).toBe(true);
     expect(true).toBeTruthy();
     expect(false).toBeFalsy();
-})
+});
 ```
