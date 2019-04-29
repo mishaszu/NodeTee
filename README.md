@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mishaszu/node-tee.svg?style=svg)](https://circleci.com/gh/mishaszu/node-tee)
+
 # NodeTee
 Simple test runner for javascript projects.
 

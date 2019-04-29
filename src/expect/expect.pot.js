@@ -114,4 +114,62 @@ myTee.case('Should fail falsy test', expect => {
   }
 });
 
+myTee.case('Should pass is not empty', expect => {
+  expect([1,2,3]).toNotBeEmpty();
+  expect('string').toNotBeEmpty();
+});
+
+myTee.case('Should fail is not empty', expect => {
+  let testValue = 0;
+  try {
+    expect([]).toNotBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  try {
+    expect('').toNotBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  try {
+    expect(1).toNotBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  if (testValue === 3) {
+    expect(true).toBeTruthy();
+  } else {
+    expect(false).toBeFalsy();
+  }
+});
+
+myTee.case('Should pass is empty', expect => {
+  expect([]).toBeEmpty();
+  expect('').toBeEmpty();
+});
+
+myTee.case('Should fail is empty', expect => {
+  let testValue = 0;
+  try {
+    expect([1,2,3]).toBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  try {
+    expect('string').toNotBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  try {
+    expect(1).toNotBeEmpty();
+  } catch (e) {
+    testValue++;
+  }
+  if (testValue === 3) {
+    expect(true).toBeTruthy();
+  } else {
+    expect(false).toBeFalsy();
+  }
+});
+
 module.exports = myTee;

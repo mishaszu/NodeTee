@@ -1,0 +1,40 @@
+/**
+ * @module Pot
+ * @description Pot module register all tee unit tests, run, sum up results and throw error if not all passed
+ * @todo implement enum type Pot
+ * @todo implement fold on success tests
+ * @todo implement hide all tests
+ */
+
+/**
+ * @function
+ * @name new
+ * @description new takes name and produce new instance of Pot
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * @param {String}
+ * @return {Pot}
+ */
+
+/**
+ * @function
+ * @name register
+ * @description register takes array of Tee-s and register them for later use. You can register new Tee-s several times
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * myPot.register([tee1, tee2]);
+ * myPot.register([tee3]);
+ * @todo write check if element is of Tee-s type
+ * @param {Tee[]}
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name run
+ * @description run is inner function to run all Pot's cases
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * myPot.run();
+ * @return {Void}
+ */

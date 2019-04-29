@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>pot/pot.jsdoc - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,53 +31,59 @@
 
 <div id="main">
     
+    <h1 class="page-title">pot/pot.jsdoc</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Pot
+ * @description Pot module register all tee unit tests, run, sum up results and throw error if not all passed
+ * @todo implement enum type Pot
+ * @todo implement fold on success tests
+ * @todo implement hide all tests
+ */
 
+/**
+ * @function
+ * @name new
+ * @description new takes name and produce new instance of Pot
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * @param {String}
+ * @return {Pot}
+ */
 
-    <section class="package">
-        <h3> </h3>		
+/**
+ * @function
+ * @name register
+ * @description register takes array of Tee-s and register them for later use. You can register new Tee-s several times
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * myPot.register([tee1, tee2]);
+ * myPot.register([tee3]);
+ * @todo write check if element is of Tee-s type
+ * @param {Tee[]}
+ * @return {Void}
+ */
+
+/**
+ * @function
+ * @name run
+ * @description run is inner function to run all Pot's cases
+ * @example
+ * const myPot = Pot.new('Some new pot');
+ * myPot.run();
+ * @return {Void}
+ */
+</code></pre>
+        </article>
     </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme">
-        <article><p><a href="https://circleci.com/gh/mishaszu/node-tee"><img src="https://circleci.com/gh/mishaszu/node-tee.svg?style=svg" alt="CircleCI"></a></p>
-<h1>NodeTee</h1><p>Simple test runner for javascript projects.</p>
-<h2>Instruction</h2><h5>Define test with <code>Tee</code></h5><pre class="prettyprint source lang-js"><code>const {Tee} = require('node-tee');
-
-const myTee = Tee.new('Controller x');
-myTee.case('Controller should pass', () => {
-    assert(true, true);
-});
-module.exports = myTee;</code></pre><h5>Register <code>Tee</code> in <code>Pot</code></h5><pre class="prettyprint source lang-js"><code>const {Pot} = require('node-tee');
-const myTee = require('./myTee.path.js');
-
-const myPot = Pot.new('My App');
-myPot.register([myTee]);
-myPot.run();</code></pre><h5>expect</h5><p><code>case</code> method callback provide expect functionality</p>
-<pre class="prettyprint source lang-js"><code>myTee('Controller', (expect) => {
-    expect(true).toBe(true);
-    expect(true).toBeTruthy();
-    expect(false).toBeFalsy();
-});</code></pre></article>
-    </section>
-
-
 
 
 

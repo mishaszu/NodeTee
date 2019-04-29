@@ -11,6 +11,12 @@ const expect = value1 => {
     toBeFalsy() {
       assert(!!value1 === false);
     },
+    toNotBeEmpty() {
+      assert(value1.length && value1.length > 0);
+    },
+    toBeEmpty() {
+      assert(value1.length !== undefined && value1.length === 0);
+    },
   };
 };
 
