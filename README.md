@@ -3,6 +3,8 @@
 # NodeTee
 Simple test runner for javascript projects.
 
+## [Documentation](https://mishaszu.github.io/node-tee/)
+
 ## Instruction
 
 ##### Define test with `Tee`
